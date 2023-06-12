@@ -1,0 +1,132 @@
+[gd_scene load_steps=14 format=3 uid="uid://swm8jb84lxtb"]
+
+[ext_resource type="Script" path="res://0001.gd" id="1_bpps7"]
+[ext_resource type="Script" path="res://WorldEnvironment.gd" id="1_e277a"]
+[ext_resource type="Script" path="res://Camera3D.gd" id="1_glqjg"]
+[ext_resource type="Script" path="res://camera_rotator.gd" id="1_rd3kg"]
+[ext_resource type="Script" path="res://OmniLight3D.gd" id="3_tue0m"]
+
+[sub_resource type="Gradient" id="Gradient_7spbt"]
+offsets = PackedFloat32Array(0.55814, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ku35s"]
+noise_type = 0
+seed = 4
+fractal_gain = 0.55
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mxpon"]
+seamless = true
+color_ramp = SubResource("Gradient_7spbt")
+noise = SubResource("FastNoiseLite_ku35s")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_alta3"]
+sky_top_color = Color(0.603922, 1, 0.572549, 1)
+sky_horizon_color = Color(0.52549, 0.788235, 1, 1)
+sky_curve = 0.424264
+sky_cover = SubResource("NoiseTexture2D_mxpon")
+ground_bottom_color = Color(0, 0.45098, 0.678431, 1)
+ground_horizon_color = Color(0.52549, 0.788235, 1, 1)
+ground_curve = 0.0721
+
+[sub_resource type="Sky" id="Sky_g0sft"]
+sky_material = SubResource("ProceduralSkyMaterial_alta3")
+
+[sub_resource type="Environment" id="Environment_hihdx"]
+background_mode = 2
+sky = SubResource("Sky_g0sft")
+ambient_light_color = Color(0.364706, 0.827451, 0.992157, 1)
+ambient_light_energy = 5.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hlk73"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgra8"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_bpps7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hihdx")
+script = ExtResource("1_e277a")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 8, 8)
+light_color = Color(0.105882, 0.847059, 1, 1)
+light_energy = 2.0
+light_indirect_energy = 2.0
+light_volumetric_fog_energy = 2.0
+light_size = 5.0
+omni_range = 528.612
+omni_attenuation = 0.4
+script = ExtResource("3_tue0m")
+
+[node name="Center_Cube" type="RigidBody3D" parent="."]
+mass = 0.01
+gravity_scale = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Center_Cube"]
+shape = SubResource("BoxShape3D_hlk73")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Center_Cube/CollisionShape3D"]
+
+[node name="Node_Axes" type="Node" parent="."]
+
+[node name="Z_Axis" type="CSGBox3D" parent="Node_Axes"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 3, -2, -2, -2)
+
+[node name="X_Axis" type="CSGBox3D" parent="Node_Axes"]
+transform = Transform3D(3, 0, 0, 0, 0.125, 0, 0, 0, 0.125, -1, -2, -3)
+
+[node name="Y_Axis" type="CSGBox3D" parent="Node_Axes"]
+transform = Transform3D(0.125, 0, 0, 0, 3, 0, 0, 0, 0.125, -2, -1, -3)
+
+[node name="Z_Cone" type="CSGCylinder3D" parent="Node_Axes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2, -2, 0)
+radius = 0.3
+height = 1.0
+cone = true
+
+[node name="X_Cone" type="CSGCylinder3D" parent="Node_Axes"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1, -2, -3)
+radius = 0.25
+height = 1.0
+cone = true
+
+[node name="Y_Cone" type="CSGCylinder3D" parent="Node_Axes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -3)
+radius = 0.25
+height = 1.0
+cone = true
+
+[node name="Node_Camera" type="Node3D" parent="."]
+script = ExtResource("1_rd3kg")
+
+[node name="Camera3D" type="Camera3D" parent="Node_Camera"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, 0)
+script = ExtResource("1_glqjg")
+
+[node name="Node_Walls" type="Node" parent="."]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Node_Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+size = Vector3(20, 20, 1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Node_Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+size = Vector3(20, 20, 1)
+material = SubResource("StandardMaterial3D_wgra8")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Node_Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+size = Vector3(20, 1, 20)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Node_Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
+size = Vector3(20, 1, 20)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Node_Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+size = Vector3(1, 20, 20)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Node_Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
+size = Vector3(1, 20, 20)
