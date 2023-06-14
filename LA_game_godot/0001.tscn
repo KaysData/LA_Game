@@ -1,10 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://swm8jb84lxtb"]
+[gd_scene load_steps=27 format=3 uid="uid://swm8jb84lxtb"]
 
 [ext_resource type="Script" path="res://0001.gd" id="1_bpps7"]
 [ext_resource type="Script" path="res://WorldEnvironment.gd" id="1_e277a"]
 [ext_resource type="Script" path="res://Camera3D.gd" id="1_glqjg"]
 [ext_resource type="Script" path="res://camera_rotator.gd" id="1_rd3kg"]
 [ext_resource type="Script" path="res://OmniLight3D.gd" id="3_tue0m"]
+[ext_resource type="ArrayMesh" uid="uid://dqsy7tqdqurjc" path="res://Mushroom_wavy.obj" id="6_53gri"]
+[ext_resource type="ArrayMesh" uid="uid://b5rqe0s1lrihg" path="res://first_terrain.obj" id="7_f1kjw"]
+[ext_resource type="Material" uid="uid://5a4p2xt7rapr" path="res://Mushroom_white_normal.tres" id="7_tnejq"]
+[ext_resource type="Texture2D" uid="uid://bqyytb6r66put" path="res://brown_leather_nor_gl_4k_normal_map.png" id="8_6adgo"]
+[ext_resource type="ArrayMesh" uid="uid://b0eifxoyp74t2" path="res://Home.obj" id="8_jeel8"]
+[ext_resource type="ArrayMesh" uid="uid://cjfhskswa7ojb" path="res://Home_w_texture.obj" id="9_48h2j"]
+[ext_resource type="Texture2D" uid="uid://1n1i0coqgvpw" path="res://rock_surface_nor_gl_4k.png" id="10_3awma"]
 
 [sub_resource type="Gradient" id="Gradient_7spbt"]
 offsets = PackedFloat32Array(0.55814, 1)
@@ -41,6 +48,23 @@ ambient_light_energy = 5.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgra8"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d07oh"]
+normal_enabled = true
+normal_texture = ExtResource("8_6adgo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_exv6g"]
+albedo_color = Color(0.490196, 0.490196, 0.490196, 1)
+normal_enabled = true
+normal_texture = ExtResource("10_3awma")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8u4j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wf7ew"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_berp6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cx0y5"]
+
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_bpps7")
 
@@ -60,6 +84,7 @@ omni_attenuation = 0.4
 script = ExtResource("3_tue0m")
 
 [node name="Center_Cube" type="RigidBody3D" parent="."]
+visible = false
 mass = 0.01
 gravity_scale = 0.0
 
@@ -67,6 +92,7 @@ gravity_scale = 0.0
 shape = SubResource("BoxShape3D_hlk73")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Center_Cube/CollisionShape3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="Node_Axes" type="Node" parent="."]
 
@@ -101,7 +127,7 @@ cone = true
 script = ExtResource("1_rd3kg")
 
 [node name="Camera3D" type="Camera3D" parent="Node_Camera"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.8, 0, 0)
 script = ExtResource("1_glqjg")
 
 [node name="Node_Walls" type="Node" parent="."]
@@ -130,3 +156,67 @@ size = Vector3(1, 20, 20)
 [node name="CSGBox3D6" type="CSGBox3D" parent="Node_Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
 size = Vector3(1, 20, 20)
+
+[node name="MushroomLearning1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.106038, -0.264706, -0.0266019)
+mesh = ExtResource("6_53gri")
+surface_material_override/0 = ExtResource("7_tnejq")
+surface_material_override/1 = ExtResource("7_tnejq")
+
+[node name="MushroomLearning7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.587479, -0.264706, 0.138181)
+mesh = ExtResource("6_53gri")
+surface_material_override/0 = ExtResource("7_tnejq")
+surface_material_override/1 = SubResource("StandardMaterial3D_d07oh")
+
+[node name="MushroomLearning2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.436775, -0.516537, 1.17812)
+mesh = ExtResource("6_53gri")
+surface_material_override/0 = ExtResource("7_tnejq")
+surface_material_override/1 = ExtResource("7_tnejq")
+
+[node name="MushroomLearning6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.335845, -0.212579, -0.630608)
+mesh = ExtResource("6_53gri")
+surface_material_override/0 = ExtResource("7_tnejq")
+surface_material_override/1 = ExtResource("7_tnejq")
+
+[node name="MushroomLearning3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.16, 0, 7.10542e-16, 0, 0.16, 0, -7.10542e-16, 0, 0.16, -1.14345, -0.783055, 0.477826)
+mesh = ExtResource("6_53gri")
+surface_material_override/0 = ExtResource("7_tnejq")
+surface_material_override/1 = ExtResource("7_tnejq")
+
+[node name="MushroomLearning4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.12, 0, 5.32907e-16, 0, 0.12, 0, -5.32907e-16, 0, 0.12, -1.24178, -0.716931, -0.439059)
+mesh = ExtResource("6_53gri")
+surface_material_override/0 = ExtResource("7_tnejq")
+surface_material_override/1 = ExtResource("7_tnejq")
+
+[node name="MushroomLearning5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.16, 0, 7.10543e-16, 0, 0.16, 0, -7.10543e-16, 0, 0.16, 0.935392, -0.721232, 1.07088)
+mesh = ExtResource("6_53gri")
+surface_material_override/0 = ExtResource("7_tnejq")
+surface_material_override/1 = ExtResource("7_tnejq")
+
+[node name="FirstTerrain" type="MeshInstance3D" parent="."]
+transform = Transform3D(-6.55671e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.55671e-09, 0, -1.2, 0)
+mesh = ExtResource("7_f1kjw")
+surface_material_override/0 = SubResource("StandardMaterial3D_exv6g")
+
+[node name="Home" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, -0.184365, -1.08639, 1.16872)
+visible = false
+mesh = ExtResource("8_jeel8")
+
+[node name="Home2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, 0.966925, 1.53717, -0.0326635)
+mesh = ExtResource("8_jeel8")
+surface_material_override/0 = SubResource("StandardMaterial3D_j8u4j")
+surface_material_override/1 = SubResource("StandardMaterial3D_wf7ew")
+
+[node name="HomeWTexture" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, -0.184, -1.086, 1.169)
+mesh = ExtResource("9_48h2j")
+surface_material_override/0 = SubResource("StandardMaterial3D_berp6")
+surface_material_override/1 = SubResource("StandardMaterial3D_cx0y5")

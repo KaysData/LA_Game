@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b5rqe0s1lrihg"
+path="res://.godot/imported/first_terrain.obj-86a448611353c1ee0ed14634f778d850.mesh"
+
+[deps]
+
+files=["res://.godot/imported/first_terrain.obj-86a448611353c1ee0ed14634f778d850.mesh"]
+
+source_file="res://first_terrain.obj"
+dest_files=["res://.godot/imported/first_terrain.obj-86a448611353c1ee0ed14634f778d850.mesh", "res://.godot/imported/first_terrain.obj-86a448611353c1ee0ed14634f778d850.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

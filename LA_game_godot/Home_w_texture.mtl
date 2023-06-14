@@ -1,0 +1,24 @@
+# Blender MTL File: 'Home_w_texture.blend'
+# Material Count: 2
+
+newmtl Material.001
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /Users/kaileyayala/Documents/Personal/Hobbies/Linear Algebra Game/Blender/Textures/garage_floor_4k.blend/textures/garage_floor_diff_4k.jpg
+
+newmtl Material.002
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /Users/kaileyayala/Documents/Personal/Hobbies/Linear Algebra Game/Blender/Textures/concrete_wall_003_4k.blend/textures/concrete_wall_003_rough_4k.jpg

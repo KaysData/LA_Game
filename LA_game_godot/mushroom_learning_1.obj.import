@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bsputdndlrfyr"
+path="res://.godot/imported/mushroom_learning_1.obj-a3e890760bba05df7d56ca3bdc60732c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/mushroom_learning_1.obj-a3e890760bba05df7d56ca3bdc60732c.mesh"]
+
+source_file="res://mushroom_learning_1.obj"
+dest_files=["res://.godot/imported/mushroom_learning_1.obj-a3e890760bba05df7d56ca3bdc60732c.mesh", "res://.godot/imported/mushroom_learning_1.obj-a3e890760bba05df7d56ca3bdc60732c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
